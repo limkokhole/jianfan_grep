@@ -1,7 +1,7 @@
 # jianfan_grep 简繁_grep
 Automatically included both Chinese Simplified and Traditional types when grep with single type. 
 
-this script consits of 4 useful commands (g, gi, gr, gri) to grep Chinese which included both Simplified and Traditional types, to prevent missing results since in reality most of them are the same meaning. Also included `ch2ch` command to translate 简 to 繁 and vice versa. And `gch` command to grep all line consists of Chinese character.
+This script contains 4 useful commands (g, gi, gr, gri) to grep Chinese which included both Simplified and Traditional types, to prevent missing results since in reality most of them are the same meaning. Also included `ch2ch` command to translate 简 to 繁 and vice versa. And `gch` command to grep all line consists of Chinese character.
 
 The name "jianfan" means 简繁.
 
