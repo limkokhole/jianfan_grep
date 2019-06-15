@@ -1,9 +1,10 @@
 #'g'rep 'ch'inese 'ch'aracter
 function gch() {
+        #credit: https://unix.stackexchange.com/a/65726/64403 , CJK unifed ideographs - Common and uncommon kanji ( 4e00 - 9faf [but 9fa5 here])
 	grep -n "["$'\xe4\xb8\x80'"-"$'\xe9\xbe\xa5'"]"
 }
 function ch2ch() {
-	echo -n "$@" | PYTHONIOENCODING=utf-8 python -c "exec(\"import sys; import opencc; cs2t = opencc.OpenCC('s2t'); ct2s = opencc.OpenCC('t2s'); i=' '.join(sys.stdin); orig=i.decode(sys.stdin.encoding); new_s2t=cs2t.convert(i.decode(sys.stdin.encoding));new_t2s=ct2s.convert(i.decode(sys.stdin.encoding));\nif orig == new_s2t == new_t2s:\n    #print('same, no need convert')\n    print(orig)\nelif new_s2t == new_t2s:\n    #print('only 1 required, don't have test case to know possible or not')\n    print(new_s2t)\nelse:\n    #print('both required')\n    print(new_s2t + '|' + new_t2s)\" )"
+	echo -n "$@" | PYTHONIOENCODING=utf-8 python -c "exec(\"import sys; import opencc; cs2t = opencc.OpenCC('s2t'); ct2s = opencc.OpenCC('t2s'); i=' '.join(sys.stdin); orig=i.decode(sys.stdin.encoding); new_s2t=cs2t.convert(i.decode(sys.stdin.encoding));new_t2s=ct2s.convert(i.decode(sys.stdin.encoding));\nif orig == new_s2t == new_t2s:\n    #print('same, no need convert')\n    print(orig)\nelif new_s2t == new_t2s:\n    #print('only 1 required, don't have test case to know possible or not')\n    print(new_s2t)\nelif ( (orig != new_s2t) and (orig != new_t2s)) :\n    #print('keep input due to mixed types')\n    print(orig + '|' + new_s2t + '|' + new_t2s)\nelse:\n    #print('both required')\n    print(new_s2t + '|' + new_t2s)\" )"
 }
 function g() {
 	bk1="$1"
@@ -27,7 +28,7 @@ function gr() {
         bk1="$1"
 	ee="$( ch2ch "$1" )"
 	shift
-	if [[ -z "$@" ]]; then grep -nHE -D skip --color=auto "$ee" #can't use -r here if stdin is pipe
+	if [[ -z "$@" ]]; then grep -nHE -D skip --color=auto "$ee" #can't use -r here if input is pipe
 	else grep -nHEr -D skip --color=auto "$ee" "$@"
 	fi
         if [[ "$ee" == "$bk1" ]]; then : #echo 'Nothing to changed.'
@@ -37,7 +38,7 @@ function gri() {
 	bk1="$1"
 	ee="$( ch2ch "$1" )"
 	shift
-	if [[ -z "$@" ]]; then grep -nHEi -D skip --color=auto "$ee" #can't use -r here if stdin is pipe
+	if [[ -z "$@" ]]; then grep -nHEi -D skip --color=auto "$ee" #can't use -r here if input is pipe
 	else grep -nHEri -D skip --color=auto "$ee" "$@"
 	fi
         if [[ "$ee" == "$bk1" ]]; then : #echo 'Nothing to changed.'

@@ -12,8 +12,11 @@ The name "jianfan" means 简繁.
     gi
     gr 
     gri
-    ch2ch 纯音乐 #will output 純音樂|纯音乐
+    ch2ch 纯音乐 #will output 純音樂|纯音乐, which means 繁|简
+    ch2ch 纯音樂 #if mixed types, it will output 纯音樂|純音樂|纯音乐, which means 简繁原输入|繁|简
     ls | gch #will output Chinese character results only
+
+### Limitation: Impossible to auto convert the input to be all possible type, e.g. 纯音樂,純音樂,纯音乐 by default which may too slow (impossible for long text unless sed to replace text... overkill). And no plan to support only 3 combination which the design is strange and not friendly to use, while this case is unlikely(who will mixed type when generate the content ?) to happen unless you grep for long text. 
     
 ### Demonstration video (Click image to play at YouTube): ##
 
