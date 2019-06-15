@@ -18,10 +18,10 @@ Ensures you perform `pip install opencc-python-reimplemented`. Then copy content
     ls | gch #will output Chinese character results only
 
 #### Indicator
-It will output bottom indicator "[Grep with 简繁: 纯音乐|純音樂]" if the input has 简繁 replacement. Input such as 音-only will no expansion and no bottom indicator.
+It will output bottom indicator such as "[Grep with 简繁: 纯音乐|純音樂]" if the input has 简繁 replacement. Input such as 音-only will no expansion and no bottom indicator.
 
 #### Limitation
-No such auto-expand the input to be all possible type, e.g. 纯音乐 auto-expand to 纯音樂|純音乐|純音樂|纯音乐 by default which may too slow (impossible for long text unless sed to replace text... overkill and what if user want to re-use the original content but get replaced ?). And no plan to do something like auto-expand up-to 3 combination which the design is strange and not friendly to use, while this case is unlikely(who will mixed type when generate the content ?) to happen unless you grep for long text. If you really want to do it, then the current option are separate the term, e.g. 纯|樂, or you need write your own function to rename/replace all of your concerned files/content to single type.
+No such auto-expand the input to be all possible combinations, e.g. 纯音乐 auto-expand to 纯音樂|純音乐|純音樂|纯音乐 by default which may too slow (impossible for long text unless sed to replace text... overkill and what if user want to re-use the original content but get replaced ?). And no plan to do something like auto-expand up-to 3 combination which the design is strange and not friendly to use, while this case is unlikely(who will mixed type when generate the content ?) to happen unless you grep for long text. If you really want to do it, then the current option are separate the term, e.g. 纯|樂, or you need write your own function to rename/replace all of your concerned files/content to single type.
     
 #### Demonstration video (Click image to play at YouTube): ##
 
