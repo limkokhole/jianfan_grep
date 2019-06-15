@@ -13,8 +13,8 @@ Ensures you perform `pip install opencc-python-reimplemented`. Then copy content
     gi
     gr 
     gri
-    ch2ch 纯音乐 #will output 純音樂|纯音乐, which means 繁|简
-    ch2ch 纯音樂 #if mixed types, it will output 纯音樂|純音樂|纯音乐, which means 简繁原输入|繁|简
+    ch2ch 纯音乐 #will output 纯音乐|純音樂, which means 简|繁
+    ch2ch 纯音樂 #if mixed types, it will output 纯音樂|纯音乐|純音樂, which means 简繁原输入|简|繁
     ls | gch #will output Chinese character results only
 
 #### Indicator
