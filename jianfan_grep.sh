@@ -27,7 +27,7 @@ function gr() {
         bk1="$1"
 	ee="$( ch2ch "$1" )"
 	shift
-	if [[ -z "$@" ]]; then grep -nHE -D skip --color=auto "$ee" #can't use -r here if stdin
+	if [[ -z "$@" ]]; then grep -nHE -D skip --color=auto "$ee" #can't use -r here if stdin is pipe
 	else grep -nHEr -D skip --color=auto "$ee" "$@"
 	fi
         if [[ "$ee" == "$bk1" ]]; then : #echo 'Nothing to changed.'
@@ -37,7 +37,7 @@ function gri() {
 	bk1="$1"
 	ee="$( ch2ch "$1" )"
 	shift
-	if [[ -z "$@" ]]; then grep -nHEi -D skip --color=auto "$ee" #can't use -r here if stdin
+	if [[ -z "$@" ]]; then grep -nHEi -D skip --color=auto "$ee" #can't use -r here if stdin is pipe
 	else grep -nHEri -D skip --color=auto "$ee" "$@"
 	fi
         if [[ "$ee" == "$bk1" ]]; then : #echo 'Nothing to changed.'
