@@ -12,7 +12,7 @@ function g() {
 	shift
 	#[1] shouldn't put -H if not -r to reduce noise (standard input) since it mostlikely used in pipe
 	#[2] use \grep to avoid user-defined-alias fancy option lead unexpected result
-	#[3]  use --color=auto to make g | g possible, without color code effect
+	#[3]  use --color=auto instead of --color=always to make `g <input>| g` possible, without color code effect
 	\grep -nE -D skip --color=auto "$ee" "$@" 
         if [[ "$ee" == "$bk1" ]]; then : #echo 'Nothing to changed.' #don't forget remove ':' if want to test comment
 	else echo -e "\n[Grep with 简繁: $ee]"; fi
