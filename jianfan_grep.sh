@@ -6,7 +6,7 @@ function gch() {
 function ch2ch() {
 	#detect python version, rf: https://stackoverflow.com/a/12121088/1074998
 	#if want to test diff python version in current bash session, do `alias python=python3`, rf: https://askubuntu.com/a/321000/265303
-	#You should comment out to the `#ret=...` and if/else/fi checking and remains one python version to reduce one python process.
+	#You should comment out the `#ret=...` and if/else/fi checking and remains one python version to reduce one python process.
 	ret=`python -c 'import sys; print("%i" % (sys.hexversion<0x03000000))'`
 	if [ $ret -eq 0 ]; then #python3
 		echo -n "$@" | PYTHONIOENCODING=utf-8 python -c "exec(\"import sys; import opencc; cs2t = opencc.OpenCC('s2t'); ct2s = opencc.OpenCC('t2s'); i=''.join(sys.stdin); orig=i; new_s2t=cs2t.convert(i);new_t2s=ct2s.convert(i);\nif orig == new_s2t == new_t2s:\n    #print('same, no need convert')\n    print(orig)\nelif new_s2t == new_t2s:\n    #print('only 1 required, don't have test case to know possible or not')\n    print(new_s2t)\nelif ( (orig != new_s2t) and (orig != new_t2s)) :\n    #print('keep input due to mixed types')\n    print(orig + '|' + new_t2s + '|' + new_s2t)\nelse:\n    #print('both required')\n    print(new_t2s + '|' + new_s2t)\" )"
