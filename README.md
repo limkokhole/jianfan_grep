@@ -6,7 +6,7 @@ This script contains 4 useful commands (g, gi, gr, gri) to grep Chinese which in
 The name "jianfan" means 简繁.
 
 #### Installation
-Ensures you perform `pip install opencc-python-reimplemented`(use pip3 if your python is python3). Then copy content of jianfan_grep.sh and paste into ~/.bash_aliases (don't forget run `source ~/.bash_aliases` if want to test without restart bash). 
+Ensures you performs `pip install opencc-python-reimplemented` successfully first. Then copy content of jianfan_grep.sh and paste into ~/.bash_aliases (don't forget run `source ~/.bash_aliases` if want to test without restart bash). 
 
 #### Usage (This g/gi/gr/gri are same usage like grep, just 'gr' here represents grep -r, and 'gi' represents grep -i, 'gri' represents grep -ri. All of them are the most frequent switching options)
     g
