@@ -13,17 +13,17 @@ Ensure you perform `pip install opencc-python-reimplemented` successfully first.
     gi
     gr 
     gri
-    ch2ch 纯音乐 #will output 纯音乐|純音樂, which means 简|繁
-    ch2ch 纯音樂 #if mixed types, it will output 纯音樂|纯音乐|純音樂, which means 简繁原输入|简|繁
+    ch2ch 纯音乐 #will output 简: 纯音乐 and 繁: 純音樂
+    ch2ch 纯音樂 #if mixed types, it will output 原: 纯音樂 and 简: 纯音乐 and 繁: 純音樂, which means 简繁原输入 and 简 and 繁
     ls | gch #will output Chinese character results only
 
 #### Indicator
-It will output bottom indicator such as "[Grep with 简繁: 纯音乐|純音樂]" if the input has 简繁 replacement. Input such as 音-only will no expansion and no bottom indicator.
+It will output bottom indicator such as `[Grep with 简繁: [纯純]音[乐樂]]` if the input has 简繁 replacement. Input such as 音-only will no expansion and no bottom indicator.
 
-#### Limitation
-No auto-expand the input to be all possible mixed-types combinations, e.g. 纯音乐 auto-expand to 纯音樂|純音乐|純音樂|纯音乐 by default which may too slow (impossible for long text unless sed to replace text... overkill and what if user want to re-use the original content but get replaced ?). And no plan to do something like auto-expand up-to 3 combination which the design is strange and not friendly to use, while this case is unlikely(who will mixed type when generate the content ?) to happen unless you grep for long text. If you really want to do it, then the current option are separate the term, e.g. 纯|樂, or you need write your own function to rename/replace all of your concerned files/content to single type.
-    
-#### Demonstration video (Click image to play at YouTube): ##
+#### Mixed types
+The `ls -la | g '务處簡报'` will expand to `[务務][处處][简簡][报報]` to grep mixed type words. Note that special words such as 皇后 only grep for single type '皇后' instead of '皇[后|後]'.
+ 
+#### Demonstration video (Click image to play at YouTube): (Note: the video not using the latest version) ##
 
 [![watch in youtube](https://i.ytimg.com/vi/7FWCxhxNVwc/hqdefault.jpg)](https://www.youtube.com/watch?v=7FWCxhxNVwc "jianfan_grep")
 
